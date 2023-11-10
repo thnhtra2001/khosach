@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:shopbansach/ui/admin/user_product_screen.dart';
 import 'package:shopbansach/ui/cart/cart_manager.dart';
 import 'package:shopbansach/ui/order/order_manager.dart';
 import 'package:shopbansach/ui/order/orders_screen.dart';
+import 'package:shopbansach/ui/personal/personal_screen.dart';
 import 'package:shopbansach/ui/products/product_overview_screen.dart';
 import 'package:shopbansach/ui/products/products_manager.dart';
 
 import 'ui/admin/edit_product_screen.dart';
+import 'ui/auth/auth_manager.dart';
+import 'ui/auth/auth_screen.dart';
 import 'ui/cart/cart_screen.dart';
 import 'ui/products/product_detail_screen.dart';
+import 'ui/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load();
   runApp(const MyApp());
 }
 
@@ -26,19 +32,39 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => ProductsManager()),
           ChangeNotifierProvider(create: (context) => CartManager()),
           ChangeNotifierProvider(create: (context) => OrdersManager()),
+          ChangeNotifierProvider(create: (context) => OrdersManager()),
+          ChangeNotifierProvider(create: (context) => AuthManager()),
+
         ],
-        child: MaterialApp(
+        child: Consumer<AuthManager>(builder: (context,authManager , child) {
+          return   MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            home:               authManager.isAuth
+                    ?
+                    // const ProductOverviewScreen()
+                    (context.read<AuthManager>().authToken?.role == "admin"
+                        ? UserProductsScreen()
+                        : const MyHomePage(title: 'Flutter Demo Home Page')
+                        )
+                    : FutureBuilder(
+                        future: authManager.tryAutoLogin(),
+                        builder: (context, snapshot) {
+                          return snapshot.connectionState ==
+                                  ConnectionState.waiting
+                              ? const SplashScreen()
+                              : const AuthScreen();
+                        },
+                      ),
             routes: {
               CartScreen.routeName: (context) => const CartScreen(),
               OrdersScreen.routeName: (context) => const OrdersScreen(),
               UserProductsScreen.routeName: (context) =>
                   const UserProductsScreen(),
+              PersonalScreen.routeName:(context) => const PersonalScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == ProductDetailScreen.routeName) {
@@ -61,7 +87,9 @@ class MyApp extends StatelessWidget {
                   },
                 );
               }
-            }));
+            });
+        })
+            );
   }
 }
 
@@ -76,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final screens = [
     ProductsOverviewScreen(),
     OrdersScreen(),
-    UserProductsScreen(),
+    PersonalScreen(),
   ];
   late int index = 0;
   @override
