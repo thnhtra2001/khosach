@@ -125,8 +125,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   children: <Widget>[
                     buildTitleField(),
                     buildCategoryField(),
+                    buildAuthorField(),
                     buildPriceField(),
                     buildDescriptionField(),
+                    buildCoutryField(),
+                    buildLanguageField(),
                     buildProductPreview(),
                   ],
                 ),
@@ -152,7 +155,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
       },
     );
   }
-    TextFormField buildCategoryField() {
+
+  TextFormField buildCategoryField() {
     return TextFormField(
       initialValue: _editedProduct.category,
       decoration: const InputDecoration(labelText: 'Thể loại'),
@@ -166,6 +170,59 @@ class _EditProductScreenState extends State<EditProductScreen> {
       },
       onSaved: (value) {
         _editedProduct = _editedProduct.copyWith(category: value);
+      },
+    );
+  }
+
+  TextFormField buildAuthorField() {
+    return TextFormField(
+      initialValue: _editedProduct.author,
+      decoration: const InputDecoration(labelText: 'Tác giả'),
+      textInputAction: TextInputAction.next,
+      autofocus: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please provide a value';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _editedProduct = _editedProduct.copyWith(author: value);
+      },
+    );
+  }
+
+  TextFormField buildCoutryField() {
+    return TextFormField(
+      initialValue: _editedProduct.coutry,
+      decoration: const InputDecoration(labelText: 'Quốc gia'),
+      textInputAction: TextInputAction.next,
+      autofocus: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please provide a value';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _editedProduct = _editedProduct.copyWith(coutry: value);
+      },
+    );
+  }
+    TextFormField buildLanguageField() {
+    return TextFormField(
+      initialValue: _editedProduct.language,
+      decoration: const InputDecoration(labelText: 'Ngôn ngữ'),
+      textInputAction: TextInputAction.next,
+      autofocus: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please provide a value';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _editedProduct = _editedProduct.copyWith(language: value);
       },
     );
   }
