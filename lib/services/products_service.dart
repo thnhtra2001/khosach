@@ -37,8 +37,8 @@ class ProductsService extends FirebaseService {
           ...product,
         }));
       });
-      // print("products");
-      // print(products);
+      print("products");
+      print(products.length);
       return products;
     } catch (error) {
       print(error);

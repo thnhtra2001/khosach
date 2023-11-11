@@ -19,8 +19,12 @@ class EditProductScreen extends StatefulWidget {
       this.product = Product(
         id: null,
         title: '',
-        price: 0,
+        category: '',
+        author: '',
+        language: '',
+        coutry: '',
         description: '',
+        price: 0,
         imageUrl: '',
       );
     } else {
@@ -120,6 +124,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 child: ListView(
                   children: <Widget>[
                     buildTitleField(),
+                    buildCategoryField(),
                     buildPriceField(),
                     buildDescriptionField(),
                     buildProductPreview(),
@@ -133,7 +138,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildTitleField() {
     return TextFormField(
       initialValue: _editedProduct.title,
-      decoration: const InputDecoration(labelText: 'Title'),
+      decoration: const InputDecoration(labelText: 'Tên sách'),
       textInputAction: TextInputAction.next,
       autofocus: true,
       validator: (value) {
@@ -147,11 +152,28 @@ class _EditProductScreenState extends State<EditProductScreen> {
       },
     );
   }
+    TextFormField buildCategoryField() {
+    return TextFormField(
+      initialValue: _editedProduct.category,
+      decoration: const InputDecoration(labelText: 'Thể loại'),
+      textInputAction: TextInputAction.next,
+      autofocus: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please provide a value';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _editedProduct = _editedProduct.copyWith(category: value);
+      },
+    );
+  }
 
   TextFormField buildPriceField() {
     return TextFormField(
       initialValue: _editedProduct.price.toString(),
-      decoration: const InputDecoration(labelText: 'Price'),
+      decoration: const InputDecoration(labelText: 'Giá bán'),
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.number,
       validator: (value) {
@@ -175,7 +197,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildDescriptionField() {
     return TextFormField(
       initialValue: _editedProduct.description,
-      decoration: const InputDecoration(labelText: 'Description'),
+      decoration: const InputDecoration(labelText: 'Mô tả'),
       maxLines: 3,
       keyboardType: TextInputType.multiline,
       validator: (value) {
@@ -211,7 +233,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
             ),
           ),
           child: _imageUrlController.text.isEmpty
-              ? const Text('Enter a URL')
+              ? const Text('Hình ảnh')
               : FittedBox(
                   child: Image.network(
                     _imageUrlController.text,
@@ -228,7 +250,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   TextFormField buildImageURLField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: 'Image URL'),
+      decoration: const InputDecoration(labelText: 'Nhập URL sách'),
       keyboardType: TextInputType.url,
       textInputAction: TextInputAction.done,
       controller: _imageUrlController,

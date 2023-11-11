@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
                     ?
                     // const ProductOverviewScreen()
                     (context.read<AuthManager>().authToken?.role == "admin"
-                        ? UserProductsScreen()
-                        : const MyHomePage(title: 'Flutter Demo Home Page')
+                        ? const MyHomePage1(title: 'Admin Screen')
+                        : const MyHomePage(title: 'User Screen')
                         )
                     : FutureBuilder(
                         future: authManager.tryAutoLogin(),
@@ -121,6 +121,40 @@ class _MyHomePageState extends State<MyHomePage> {
             NavigationDestination(icon: Icon(Icons.home), label: "Trang chủ"),
             NavigationDestination(
                 icon: Icon(Icons.shopping_bag), label: "Đơn hàng"),
+            NavigationDestination(
+                icon: Icon(Icons.account_circle_outlined), label: "Cá nhân"),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyHomePage1 extends StatefulWidget {
+  const MyHomePage1({super.key, required this.title});
+  final String title;
+  @override
+  State<MyHomePage1> createState() => _MyHomePage1State();
+}
+
+class _MyHomePage1State extends State<MyHomePage1> {
+  final screens = [
+    UserProductsScreen(),
+    PersonalScreen(),
+  ];
+  late int index = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screens[index],
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(),
+        child: NavigationBar(
+          selectedIndex: index,
+          onDestinationSelected: (index) =>
+              setState(() => (this.index = index)),
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.home), label: "Admin"),
             NavigationDestination(
                 icon: Icon(Icons.account_circle_outlined), label: "Cá nhân"),
           ],

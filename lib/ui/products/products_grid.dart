@@ -11,15 +11,14 @@ class ProductsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // doc ra list<product> se duoc hien thi tu productsmanager
-    // final products = context.select<ProductsManager, List<Product>>(
-    //     (productsManager) =>productsManager.items);
     final productsManager = ProductsManager();
-        final products = productsManager.items;
+        final product = productsManager.items;
+    print("BBBBBBBBBBBBBBBBB");
+    print(product.length);
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
-      itemCount: products.length,
-      itemBuilder: (ctx, i) => ProductGridTile(products[i]),
+      itemCount: product.length,
+      itemBuilder: (ctx, i) => ProductGridTile(product[i]),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 3 / 2,
