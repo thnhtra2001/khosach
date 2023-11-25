@@ -4,10 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:shopbansach/ui/payment_cart/payment_cart_screen.dart';
 import 'package:shopbansach/ui/admin/user_product_screen.dart';
 import 'package:shopbansach/ui/cart/cart_manager.dart';
-import 'package:shopbansach/ui/order/order_detail_screen.dart';
+// import 'package:shopbansach/ui/order/order_detail_screen.dart';
 import 'package:shopbansach/ui/order/order_manager.dart';
 import 'package:shopbansach/ui/order/orders_screen.dart';
 import 'package:shopbansach/ui/personal/personal_screen.dart';
+import 'package:shopbansach/ui/personal_admin/personal_admin_screen.dart';
 import 'package:shopbansach/ui/products/product_overview_screen.dart';
 import 'package:shopbansach/ui/products/products_manager.dart';
 import 'package:shopbansach/ui/products/search_product.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
               PaymentCartScreen1.routeName:(context) => const PaymentCartScreen1(),
             SearchScreen.routeName:(context) => const SearchScreen(),
             ChatbotScreen1.routeName:(context) => const ChatbotScreen1(),
+            PersonalAdminScreen.routeName:(context) => const PersonalAdminScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == ProductDetailScreen.routeName) {
@@ -149,7 +151,7 @@ class MyHomePage1 extends StatefulWidget {
 class _MyHomePage1State extends State<MyHomePage1> {
   final screens = [
     const UserProductsScreen(),
-    const PersonalScreen(),
+    const PersonalAdminScreen(),
   ];
   late int index = 0;
   @override

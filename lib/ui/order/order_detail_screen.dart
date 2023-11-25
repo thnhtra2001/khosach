@@ -83,11 +83,11 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
             const SizedBox(height: 20),
             buildTotalAmountRow(),
             const SizedBox(height: 20),
-            buildOwnerRow(),
-            const SizedBox(height: 20),
-            buildOriginRow(),
-            const SizedBox(height: 20),
-            buildStatusRow(),
+            // buildOwnerRow(),
+            // const SizedBox(height: 20),
+            // buildOriginRow(),
+            // const SizedBox(height: 20),
+            // buildStatusRow(),
             const SizedBox(height: 20),
             buildStatusPayment(),
             const SizedBox(height: 20),
@@ -172,74 +172,74 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
     );
   }
 
-  Widget buildOwnerRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.only(left: 20),
-            child: const Text(
-              'Người bán',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 20,
-              ),
-            )),
-        Container(
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20),
-          child: Text('${widget.order.products.first.author}',
-              style: TextStyle(fontSize: 16, color: Colors.black)),
-        ),
-      ],
-    );
-  }
+  // Widget buildOwnerRow() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: <Widget>[
+  //       Container(
+  //           padding: EdgeInsets.only(left: 20),
+  //           child: const Text(
+  //             'Người bán',
+  //             style: TextStyle(
+  //               color: Colors.black54,
+  //               fontSize: 20,
+  //             ),
+  //           )),
+  //       Container(
+  //         alignment: Alignment.centerRight,
+  //         padding: EdgeInsets.only(right: 20),
+  //         child: Text('${widget.order.products.first.author}',
+  //             style: TextStyle(fontSize: 16, color: Colors.black)),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget buildOriginRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.only(left: 20),
-            child: const Text(
-              'Xuất xứ',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 20,
-              ),
-            )),
-        Container(
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20),
-          child: Text('${widget.order.products.first.coutry}',
-              style: TextStyle(fontSize: 16, color: Colors.black)),
-        ),
-      ],
-    );
-  }
+  // Widget buildOriginRow() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: <Widget>[
+  //       Container(
+  //           padding: EdgeInsets.only(left: 20),
+  //           child: const Text(
+  //             'Xuất xứ',
+  //             style: TextStyle(
+  //               color: Colors.black54,
+  //               fontSize: 20,
+  //             ),
+  //           )),
+  //       Container(
+  //         alignment: Alignment.centerRight,
+  //         padding: EdgeInsets.only(right: 20),
+  //         child: Text('${widget.order.products.first.coutry}',
+  //             style: TextStyle(fontSize: 16, color: Colors.black)),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget buildStatusRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.only(left: 20),
-            child: const Text(
-              'Tình trạng',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 20,
-              ),
-            )),
-        Container(
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20),
-          child: Text('${widget.order.products.last.language}',
-              style: TextStyle(fontSize: 16, color: Colors.black)),
-        ),
-      ],
-    );
-  }
+  // Widget buildStatusRow() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: <Widget>[
+  //       Container(
+  //           padding: EdgeInsets.only(left: 20),
+  //           child: const Text(
+  //             'Tình trạng',
+  //             style: TextStyle(
+  //               color: Colors.black54,
+  //               fontSize: 20,
+  //             ),
+  //           )),
+  //       Container(
+  //         alignment: Alignment.centerRight,
+  //         padding: EdgeInsets.only(right: 20),
+  //         child: Text('${widget.order.products.last.language}',
+  //             style: TextStyle(fontSize: 16, color: Colors.black)),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget buildAddressRow() {
     return Row(

@@ -76,10 +76,6 @@ class _PaymentCartScreen1State extends State<PaymentCartScreen1> {
                       child: Column(
                         children: [
                           paymentNow(snapshot, cart),
-                          SizedBox(height: 20),
-                          SizedBox(height: 20),
-
-                          // statusPayZalo(),
                         ],
                       )),
                 );
@@ -260,9 +256,6 @@ class _PaymentCartScreen1State extends State<PaymentCartScreen1> {
             address: snapshot.data['address'],
             customerId: snapshot.data['uid'],
             payResult: payResult,
-            // owner: cart.owner,
-            // origin: cart.origin,
-            // status: cart.status,
           );
           context.read<OrdersManager>().addOrder(_order);
           // cart.clear();

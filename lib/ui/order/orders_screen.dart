@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 import 'order_detail_screen.dart';
 import 'order_item_card.dart';
 import 'order_manager.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends StatefulWidget {
   static const routeName = '/orders';
   const OrdersScreen({super.key});
+
+  @override
+  State<OrdersScreen> createState() => _OrdersScreenState();
+}
+
+class _OrdersScreenState extends State<OrdersScreen> {
+  late Future<void> _fetchOrders = Future(() => null);
+  @override
+  void initState() {
+    super.initState();
+    _fetchOrders = context.read<OrdersManager>().fetchOrders();
+    print("-------------------------------");
+    print(_fetchOrders);
+    print('-----------------------------');
+  }
 
   @override
   Widget build(BuildContext context) {
     final ordersManager = OrdersManager();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ĐƠN HÀNG'),
-      ),
-      body: 
-                Consumer<OrdersManager>(
+        appBar: AppBar(
+          title: const Text('ĐƠN HÀNG'),
+        ),
+        body: FutureBuilder(
+            future: _fetchOrders,
+            builder: (contex, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Consumer<OrdersManager>(
                   builder: (ctx, ordersManager, child) {
                     return ListView.builder(
                         itemCount: ordersManager.orderCount,
@@ -34,10 +52,9 @@ class OrdersScreen extends StatelessWidget {
                               child: OrderItemCard(ordersManager.orders[i]),
                             ));
                   },
-                )
-          );
-        }
-      
-    
+                );
+              }
+              return const Center(child: CircularProgressIndicator());
+            }));
   }
-
+}

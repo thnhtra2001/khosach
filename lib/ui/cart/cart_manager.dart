@@ -47,14 +47,16 @@ class CartManager with ChangeNotifier {
         product.id!,
         () => CartItem(
             id: 'c${DateTime.now().toIso8601String()}',
+            productId: product.id,
             title: product.title,
             price: product.price,
             imageUrl: product.imageUrl,
             quantity: 1,
-            category: product.category,
-            author: product.author,
-            language: product.language,
-            coutry: product.coutry),
+            // category: product.category,
+            // author: product.author,
+            // language: product.language,
+            // coutry: product.coutry,
+            ),
       );
     }
     notifyListeners();
