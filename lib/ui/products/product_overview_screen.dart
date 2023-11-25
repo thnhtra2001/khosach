@@ -8,6 +8,7 @@ import 'products_grid.dart';
 
 // import '../cart/cart_manager.dart';
 import 'products_manager.dart';
+import 'search_product.dart';
 import 'top_right_badge.dart';
 
 enum FilterOptions { favorites, all }
@@ -27,18 +28,18 @@ class _ProductOverviewScreenState extends State<ProductsOverviewScreen> {
   void initState() {
     super.initState();
     _fetchProducts = context.read<ProductsManager>().fetchProducts();
-    // print('=========================');
-    // print(_fetchProducts.toString().length);
-    // print('=========================');
+    print('=========================');
+    print(_fetchProducts.toString().length);
+    print('=========================');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Shop cây cảnh'),
+          title: const Text('BOOKSTORE'),
           actions: <Widget>[
-            buildShoppingCartIcon(),
+            searchProduct()
           ],
         ),
         body: FutureBuilder(
@@ -54,18 +55,12 @@ class _ProductOverviewScreenState extends State<ProductsOverviewScreen> {
         ));
   }
 
-  Widget buildShoppingCartIcon() {
-    return Consumer<CartManager>(
-      builder: (context, cartManager, child) {
-        return TopRightBadge(
-          data: cartManager.productCount,
-          child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-              icon: const Icon(Icons.shopping_cart)),
-        );
-      },
-    );
+  Widget searchProduct() {
+    return IconButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(SearchScreen.routeName);
+          print("hello");
+        },
+        icon: const Icon(Icons.search));
   }
 }

@@ -63,7 +63,7 @@ class ProductGridTile extends StatelessWidget {
               ),
               duration: const Duration(seconds: 2),
               action: SnackBarAction(
-                label: 'UNDO',
+                label: 'Xóa',
                 onPressed: () {
                   cart.removeSingleItem(product.id!);
                 },

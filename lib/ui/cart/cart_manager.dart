@@ -4,14 +4,7 @@ import '../../models/product.dart';
 import 'package:flutter/foundation.dart';
 
 class CartManager with ChangeNotifier {
-  Map<String, CartItem> _items = {
-    // 'p1': CartItem(
-    //   id: 'c1',
-    //   title: 'Red Shirt',
-    //   price: 29.99,
-    //   quantity: 2,
-    // ),
-  };
+  Map<String, CartItem> _items = {};
   int get productCount {
     return _items.length;
   }
@@ -32,6 +25,14 @@ class CartManager with ChangeNotifier {
     return total;
   }
 
+  int get totalQuantity {
+    var totalQuantity = 0;
+    _items.forEach((key, cartItem) {
+      totalQuantity += cartItem.quantity;
+    });
+    return totalQuantity;
+  }
+
   void addItem(Product product) {
     if (_items.containsKey(product.id)) {
       //change quantity...
@@ -45,11 +46,15 @@ class CartManager with ChangeNotifier {
       _items.putIfAbsent(
         product.id!,
         () => CartItem(
-          id: 'c${DateTime.now().toIso8601String()}',
-          title: product.title,
-          price: product.price,
-          quantity: 1,
-        ),
+            id: 'c${DateTime.now().toIso8601String()}',
+            title: product.title,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            quantity: 1,
+            category: product.category,
+            author: product.author,
+            language: product.language,
+            coutry: product.coutry),
       );
     }
     notifyListeners();

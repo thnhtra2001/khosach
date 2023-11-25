@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:shopbansach/ui/payment_cart/payment_cart_screen.dart';
 import 'package:shopbansach/ui/admin/user_product_screen.dart';
 import 'package:shopbansach/ui/cart/cart_manager.dart';
+import 'package:shopbansach/ui/order/order_detail_screen.dart';
 import 'package:shopbansach/ui/order/order_manager.dart';
 import 'package:shopbansach/ui/order/orders_screen.dart';
 import 'package:shopbansach/ui/personal/personal_screen.dart';
 import 'package:shopbansach/ui/products/product_overview_screen.dart';
 import 'package:shopbansach/ui/products/products_manager.dart';
+import 'package:shopbansach/ui/products/search_product.dart';
 
 import 'ui/admin/edit_product_screen.dart';
 import 'ui/auth/auth_manager.dart';
@@ -32,9 +35,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => ProductsManager()),
           ChangeNotifierProvider(create: (context) => CartManager()),
           ChangeNotifierProvider(create: (context) => OrdersManager()),
-          ChangeNotifierProvider(create: (context) => OrdersManager()),
+          // ChangeNotifierProvider(create: (context) => OrdersManager()),
           ChangeNotifierProvider(create: (context) => AuthManager()),
-
         ],
         child: Consumer<AuthManager>(builder: (context,authManager , child) {
           return   MaterialApp(
@@ -65,6 +67,8 @@ class MyApp extends StatelessWidget {
               UserProductsScreen.routeName: (context) =>
                   const UserProductsScreen(),
               PersonalScreen.routeName:(context) => const PersonalScreen(),
+              PaymentCartScreen1.routeName:(context) => const PaymentCartScreen1(),
+            SearchScreen.routeName:(context) => const SearchScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == ProductDetailScreen.routeName) {
@@ -102,9 +106,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final screens = [
-    ProductsOverviewScreen(),
-    OrdersScreen(),
-    PersonalScreen(),
+    const ProductsOverviewScreen(),
+    const CartScreen(),
+    const OrdersScreen(),
+    const PersonalScreen(),
   ];
   late int index = 0;
   @override
@@ -112,13 +117,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(),
+        data: const NavigationBarThemeData(),
         child: NavigationBar(
           selectedIndex: index,
           onDestinationSelected: (index) =>
               setState(() => (this.index = index)),
-          destinations: [
+          destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Trang chủ"),
+            NavigationDestination(icon: Icon(Icons.shopping_cart), label: "Giỏ hàng"),
+
             NavigationDestination(
                 icon: Icon(Icons.shopping_bag), label: "Đơn hàng"),
             NavigationDestination(
@@ -139,8 +146,8 @@ class MyHomePage1 extends StatefulWidget {
 
 class _MyHomePage1State extends State<MyHomePage1> {
   final screens = [
-    UserProductsScreen(),
-    PersonalScreen(),
+    const UserProductsScreen(),
+    const PersonalScreen(),
   ];
   late int index = 0;
   @override
@@ -148,12 +155,12 @@ class _MyHomePage1State extends State<MyHomePage1> {
     return Scaffold(
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(),
+        data: const NavigationBarThemeData(),
         child: NavigationBar(
           selectedIndex: index,
           onDestinationSelected: (index) =>
               setState(() => (this.index = index)),
-          destinations: [
+          destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Admin"),
             NavigationDestination(
                 icon: Icon(Icons.account_circle_outlined), label: "Cá nhân"),

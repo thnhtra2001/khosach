@@ -11,20 +11,21 @@ import 'package:flutter/foundation.dart';
 class ProductsManager with ChangeNotifier {
   ProductsService _productsService = ProductsService();
     late List<Product> _items = [
-    Product(
-      id: 'p1',
-      title: 'Red Shirt',
-      description: 'A red shirt - it is pretty red!',
-      price: 29.99,
-      imageUrl:
-          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
-      category: 'tra',
-      author: '',
-      coutry: '',
-      language: ''
+  //   Product(
+  //     id: 'p1',
+  //     title: 'Red Shirt',
+  //     description: 'A red shirt - it is pretty red!',
+  //     price: 29.99,
+  //     imageUrl:
+  //         'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+  //     category: 'kinh di',
+  //     author: 'thanh tra',
+  //     coutry: 'vietnam',
+  //     language: 'vietnam'
 
-    ),
+  //   ),
   ];
+  List<Product> _display_product = [];
 
   Future<void> fetchProducts() async {
     _items = await _productsService.fetchProducts();
@@ -79,12 +80,18 @@ class ProductsManager with ChangeNotifier {
     }
   }
 
-  // Future<void> toggleFavoriteStatus(Product product) async {
-  //   final savedStatus = product.isFavorite;
-  //   product.isFavorite = !savedStatus;
+  List<Product> updateList(String value) {
+    _display_product = _items
+        .where((element) =>
+            element.title.toLowerCase().contains(value.toLowerCase()))
+        .toList();
+    return _display_product;
+  }
 
-  //   if (!await _productsService.saveFavoriteStatus(product)) {
-  //     product.isFavorite = savedStatus;
-  //   }
-  // }
+  int get display_product_Count {
+    return _display_product.length;
+  }
+  List<Product> get display_product {
+    return [..._display_product];
+  }
 }

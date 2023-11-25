@@ -6,13 +6,13 @@ import 'products_manager.dart';
 import '../../models/product.dart';
 
 class ProductsGrid extends StatelessWidget {
-
   const ProductsGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
     final productsManager = ProductsManager();
-        final product = productsManager.items;
+    final product = context.select<ProductsManager, List<Product>>(
+        (productsManager) => productsManager.items);
     print("BBBBBBBBBBBBBBBBB");
     print(product.length);
     return GridView.builder(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopbansach/ui/payment_cart/payment_cart_screen.dart';
 import 'package:shopbansach/ui/order/orders_screen.dart';
 
 import '../order/order_manager.dart';
@@ -70,12 +71,7 @@ class CartScreen extends StatelessWidget {
               onPressed: cart.totalAmount <= 0
                   ? null
                   : () {
-                      context.read<OrdersManager>().addOrder(
-                            cart.products,
-                            cart.totalAmount,
-                          );
-                        Navigator.of(context).pushNamed(OrdersScreen.routeName);
-                      cart.clear();
+                        Navigator.of(context).pushNamed(PaymentCartScreen1.routeName);
                     },
               style: TextButton.styleFrom(
                 textStyle: TextStyle(color: Theme.of(context).primaryColor),
