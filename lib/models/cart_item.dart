@@ -5,10 +5,10 @@ class CartItem {
   final int quantity;
   final double price;
   final String imageUrl;
-  // final String category;
-  // final String author;
-  // final String language;
-  // final String coutry;
+  final String category;
+  final String author;
+  final String language;
+  final String coutry;
   CartItem({
     required this.id,
     required this.productId,
@@ -16,10 +16,10 @@ class CartItem {
     required this.quantity,
     required this.price,
     required this.imageUrl,
-    // required this.category,
-    // required this.author,
-    // required this.language,
-    // required this.coutry,
+    required this.category,
+    required this.author,
+    required this.language,
+    required this.coutry,
   });
   CartItem copyWith({
     String? id,
@@ -28,10 +28,10 @@ class CartItem {
     int? quantity,
     double? price,
     String? imageUrl,
-    // String? category,
-    // String? author,
-    // String? language,
-    // String? coutry,
+    String? category,
+    String? author,
+    String? language,
+    String? coutry,
   }) {
     return CartItem(
       id: id ?? this.id,
@@ -40,10 +40,10 @@ class CartItem {
       quantity: quantity ?? this.quantity,
       price: price ?? this.price,
       imageUrl: imageUrl ?? this.imageUrl,
-      // category: category ?? this.category,
-      // author: author ?? this.author,
-      // language: language ?? this.language,
-      // coutry: coutry ?? this.coutry,
+      category: category ?? this.category,
+      author: author ?? this.author,
+      language: language ?? this.language,
+      coutry: coutry ?? this.coutry,
     );
   }
 
@@ -54,10 +54,10 @@ class CartItem {
       'quantity': quantity,
       'price': price,
       'imageUrl': imageUrl,
-      // 'category': category,
-      // 'author': author,
-      // 'language': language,
-      // 'coutry': coutry,
+      'category': category,
+      'author': author,
+      'language': language,
+      'coutry': coutry,
     };
   }
 
@@ -69,10 +69,10 @@ class CartItem {
       quantity: json['quantity'],
       price: json['price'],
       imageUrl: json['imageUrl'],
-      // category: json['category'],
-      // author: json['author'],
-      // language: json['language'],
-      // coutry: json['coutry'],
+      category: json['category'],
+      author: json['author'],
+      language: json['language'],
+      coutry: json['coutry'],
     );
   }
 }

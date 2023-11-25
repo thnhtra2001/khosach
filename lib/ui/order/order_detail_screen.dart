@@ -73,21 +73,27 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
             const SizedBox(height: 20),
             buildAddressRow(),
             // const SizedBox(height: 20),
-            const Divider(color: Colors.black,),
+            const Divider(
+              color: Colors.black,
+            ),
             buildNameProductRow(),
             // const SizedBox(height: 20),
             buildOrderDetails(),
-            const Divider(color: Colors.black,),
+            const Divider(
+              color: Colors.black,
+            ),
             // const SizedBox(height: 20),
             buildTotalQuantity(),
             const SizedBox(height: 20),
             buildTotalAmountRow(),
             const SizedBox(height: 20),
-            // buildOwnerRow(),
-            // const SizedBox(height: 20),
-            // buildOriginRow(),
-            // const SizedBox(height: 20),
-            // buildStatusRow(),
+            buildCategoryRow(),
+            const SizedBox(height: 20),
+            buildAuthorRow(),
+            const SizedBox(height: 20),
+            buildLanguageRow(),
+            const SizedBox(height: 20),
+            buildCoutryRow(),
             const SizedBox(height: 20),
             buildStatusPayment(),
             const SizedBox(height: 20),
@@ -126,6 +132,7 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
       ),
     );
   }
+
   Widget buildNameRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,74 +179,96 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
     );
   }
 
-  // Widget buildOwnerRow() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: <Widget>[
-  //       Container(
-  //           padding: EdgeInsets.only(left: 20),
-  //           child: const Text(
-  //             'Người bán',
-  //             style: TextStyle(
-  //               color: Colors.black54,
-  //               fontSize: 20,
-  //             ),
-  //           )),
-  //       Container(
-  //         alignment: Alignment.centerRight,
-  //         padding: EdgeInsets.only(right: 20),
-  //         child: Text('${widget.order.products.first.author}',
-  //             style: TextStyle(fontSize: 16, color: Colors.black)),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Widget buildCategoryRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.only(left: 20),
+            child: const Text(
+              'The loai',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+              ),
+            )),
+        Container(
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20),
+          child: Text('${widget.order.products.first.category}',
+              style: TextStyle(fontSize: 16, color: Colors.black)),
+        ),
+      ],
+    );
+  }
+    Widget buildAuthorRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.only(left: 20),
+            child: const Text(
+              'Nguoi ban',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+              ),
+            )),
+        Container(
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20),
+          child: Text('${widget.order.products.first.author}',
+              style: TextStyle(fontSize: 16, color: Colors.black)),
+        ),
+      ],
+    );
+  }
 
-  // Widget buildOriginRow() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: <Widget>[
-  //       Container(
-  //           padding: EdgeInsets.only(left: 20),
-  //           child: const Text(
-  //             'Xuất xứ',
-  //             style: TextStyle(
-  //               color: Colors.black54,
-  //               fontSize: 20,
-  //             ),
-  //           )),
-  //       Container(
-  //         alignment: Alignment.centerRight,
-  //         padding: EdgeInsets.only(right: 20),
-  //         child: Text('${widget.order.products.first.coutry}',
-  //             style: TextStyle(fontSize: 16, color: Colors.black)),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Widget buildCoutryRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.only(left: 20),
+            child: const Text(
+              'Quoc gia',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+              ),
+            )),
+        Container(
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20),
+          child: Text('${widget.order.products.first.coutry}',
+              style: TextStyle(fontSize: 16, color: Colors.black)),
+        ),
+      ],
+    );
+  }
 
-  // Widget buildStatusRow() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: <Widget>[
-  //       Container(
-  //           padding: EdgeInsets.only(left: 20),
-  //           child: const Text(
-  //             'Tình trạng',
-  //             style: TextStyle(
-  //               color: Colors.black54,
-  //               fontSize: 20,
-  //             ),
-  //           )),
-  //       Container(
-  //         alignment: Alignment.centerRight,
-  //         padding: EdgeInsets.only(right: 20),
-  //         child: Text('${widget.order.products.last.language}',
-  //             style: TextStyle(fontSize: 16, color: Colors.black)),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Widget buildLanguageRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.only(left: 20),
+            child: const Text(
+              'Ngon ngu',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+              ),
+            )),
+        Container(
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20),
+          child: Text('${widget.order.products.last.language}',
+              style: TextStyle(fontSize: 16, color: Colors.black)),
+        ),
+      ],
+    );
+  }
 
   Widget buildAddressRow() {
     return Row(

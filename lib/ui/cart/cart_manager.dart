@@ -52,10 +52,10 @@ class CartManager with ChangeNotifier {
             price: product.price,
             imageUrl: product.imageUrl,
             quantity: 1,
-            // category: product.category,
-            // author: product.author,
-            // language: product.language,
-            // coutry: product.coutry,
+            category: product.category,
+            author: product.author,
+            language: product.language,
+            coutry: product.coutry,
             ),
       );
     }
