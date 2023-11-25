@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shopbansach/ui/chatbot_rasa_ai/chatbot_rasa_ai.dart';
 
 import '../cart/cart_manager.dart';
 import '../cart/cart_screen.dart';
@@ -55,6 +56,7 @@ class _ProductOverviewScreenState extends State<ProductsOverviewScreen> {
         ),
               floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Navigator.of(context).pushNamed(ChatbotScreen1.routeName);
           print("Heloo");
         },
         tooltip: 'Increment',

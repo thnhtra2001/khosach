@@ -16,6 +16,7 @@ import 'ui/admin/edit_product_screen.dart';
 import 'ui/auth/auth_manager.dart';
 import 'ui/auth/auth_screen.dart';
 import 'ui/cart/cart_screen.dart';
+import 'ui/chatbot_rasa_ai/chatbot_rasa_ai.dart';
 import 'ui/products/product_detail_screen.dart';
 import 'ui/splash_screen.dart';
 
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
               PersonalScreen.routeName:(context) => const PersonalScreen(),
               PaymentCartScreen1.routeName:(context) => const PaymentCartScreen1(),
             SearchScreen.routeName:(context) => const SearchScreen(),
+            ChatbotScreen1.routeName:(context) => const ChatbotScreen1(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == ProductDetailScreen.routeName) {
