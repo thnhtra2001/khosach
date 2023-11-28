@@ -89,6 +89,7 @@ class _PersonalAdminScreenState extends State<PersonalAdminScreen> {
                               return _buildSubmitButton();
                             },
                           ),
+                          const SizedBox(height: 20,),
                           _buildLogoutButton()
                         ],
                       ),

@@ -89,6 +89,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
                               return _buildSubmitButton();
                             },
                           ),
+                          const SizedBox(height: 20,),
                           _buildLogoutButton()
                         ],
                       ),
