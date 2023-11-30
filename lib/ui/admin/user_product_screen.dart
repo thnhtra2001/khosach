@@ -35,12 +35,28 @@ class UserProductsScreen extends StatelessWidget {
               return RefreshIndicator(
                 onRefresh: () async =>
                 _refreshProduct(context),
-                child: buildUserProductListView(productsManager),
+                child: Column(
+                  children: [
+                    buildTotalProduct(productsManager),
+                    SizedBox(height: 650 ,child: buildUserProductListView(productsManager)),
+                  ],
+                )
               );
             }));
   }
 }
-
+Widget buildTotalProduct(ProductsManager productsManager){
+    return Consumer<ProductsManager>(
+      builder: (context, productsManager, child) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text("Tổng số sản phẩm là: ${productsManager.itemCount}", style: const TextStyle(color: Colors.grey, fontSize: 18),),
+          ],
+        );
+      },
+    );
+}
 Widget buildAddButton(BuildContext context) {
   return IconButton(
       onPressed: () {

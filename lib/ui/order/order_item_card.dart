@@ -30,9 +30,9 @@ class _OrderItemCardState extends State<OrderItemCard> {
   }
 
   Widget buildOrderDetails() {
-    return Container(
+    return SizedBox(height: widget.order.productCount *30,
+    child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-      height: min(widget.order.productCount * 20.0 + 10, 100),
       child: ListView(
         children: widget.order.products
             .map(
@@ -41,6 +41,7 @@ class _OrderItemCardState extends State<OrderItemCard> {
                 children: <Widget>[
                   Text(
                     prod.title,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -58,6 +59,7 @@ class _OrderItemCardState extends State<OrderItemCard> {
             )
             .toList(),
       ),
+    ),
     );
   }
 

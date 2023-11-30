@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:shopbansach/ui/admin/search_admin.dart';
 import 'package:shopbansach/ui/payment_cart/payment_cart_screen.dart';
 import 'package:shopbansach/ui/admin/user_product_screen.dart';
 import 'package:shopbansach/ui/cart/cart_manager.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
             SearchScreen.routeName:(context) => const SearchScreen(),
             ChatbotScreen1.routeName:(context) => const ChatbotScreen1(),
             PersonalAdminScreen.routeName:(context) => const PersonalAdminScreen(),
+            SearchAdminScreen.routeName:(context) => const SearchAdminScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == ProductDetailScreen.routeName) {
@@ -151,6 +153,7 @@ class MyHomePage1 extends StatefulWidget {
 class _MyHomePage1State extends State<MyHomePage1> {
   final screens = [
     const UserProductsScreen(),
+    const SearchAdminScreen(),
     const PersonalAdminScreen(),
   ];
   late int index = 0;
@@ -166,6 +169,7 @@ class _MyHomePage1State extends State<MyHomePage1> {
               setState(() => (this.index = index)),
           destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Admin"),
+            NavigationDestination(icon: Icon(Icons.search), label: "Tìm kiếm"),
             NavigationDestination(
                 icon: Icon(Icons.account_circle_outlined), label: "Cá nhân"),
           ],
