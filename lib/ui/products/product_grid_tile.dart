@@ -43,11 +43,12 @@ class ProductGridTile extends StatelessWidget {
   Widget buildGridFooterBar(BuildContext context) {
     return GridTileBar(
       backgroundColor: Color.fromARGB(255, 146, 115, 141),
-      leading: 
-      Text(
+      leading: SizedBox( width: 100,child: Text(
         product.title,
-        textAlign: TextAlign.center,
-      ),
+        textAlign: TextAlign.start,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(color: Colors.black),
+      ),),
       trailing: IconButton(
         icon: const Icon(
           Icons.shopping_cart,
