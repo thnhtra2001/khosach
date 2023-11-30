@@ -102,9 +102,9 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
   }
 
   Widget buildOrderDetails() {
-    return Container(
+    return SizedBox(width: 400,height: widget.order.productCount*30, child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-      height: min(widget.order.productCount * 20.0 + 40, 150),
+      // height: min(widget.order.productCount * 20.0 + 40, 150),
       child: ListView(
         children: widget.order.products
             .map(
@@ -113,6 +113,7 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
                 children: <Widget>[
                   Text(
                     prod.title,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -130,7 +131,7 @@ class OrderDetailScreenState extends State<OrderDetailScreen> {
             )
             .toList(),
       ),
-    );
+    ),);
   }
 
   Widget buildNameRow() {

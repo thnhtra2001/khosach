@@ -34,58 +34,43 @@ class _PaymentCartScreen1State extends State<PaymentCartScreen1> {
   Widget build(BuildContext context) {
     final cart = context.watch<CartManager>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Trang thanh toán'),
-      ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 20),
-          FutureBuilder<Map<String, dynamic>>(
-            future: _futureFetchUserInformation,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return Center(
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          paymentAddress(snapshot.data!['address']),
-                          inforNameUser(snapshot.data!['name']),
-                          const SizedBox(height: 20),
-                          inforPhoneUser(snapshot.data!['phone'])
-                        ],
-                      )),
-                );
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
+        appBar: AppBar(
+          title: const Text('Trang thanh toán'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20),
+              FutureBuilder<Map<String, dynamic>>(
+                future: _futureFetchUserInformation,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Center(
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              paymentAddress(snapshot.data!['address']),
+                              inforNameUser(snapshot.data!['name']),
+                              const SizedBox(height: 20),
+                              inforPhoneUser(snapshot.data!['phone']),
+                              const SizedBox(height: 10),
+                              SizedBox(
+                                height: cart.productCount * 85,
+                                child: buildCartDetails(cart),
+                              ),
+                              buildProductTotal(cart),
+                              paymentNow(snapshot, cart),
+                            ],
+                          )),
+                    );
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
+            ],
           ),
-          // buildCartSummary(cart, context),
-          const SizedBox(height: 10),
-          Expanded(
-            child: buildCartDetails(cart),
-          ),
-          buildProductTotal(cart),
-          FutureBuilder<Map<String, dynamic>>(
-            future: _futureFetchUserInformation,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return Center(
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          paymentNow(snapshot, cart),
-                        ],
-                      )),
-                );
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget inforPhoneUser(data) {

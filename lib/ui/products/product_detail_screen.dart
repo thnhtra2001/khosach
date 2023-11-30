@@ -53,101 +53,112 @@ class ProductDetailScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Tên cây',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
-                                    Text(
-                                      '${product.title}',
-                                      style: const TextStyle(
-                                        color: Colors.red,
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 18,
+                          SizedBox(
+                            width: 150,
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Tên cây',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Chủ cửa hàng',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
-                                    Text(
-                                      '${product.author}',
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
+                                      Text(
+                                        '${product.title}',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          color: Colors.red,
+                                          fontStyle: FontStyle.italic,
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Xuất xứ',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
-                                    Text(
-                                      '${product.coutry}',
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Chủ cửa hàng',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Trạng thái',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
-                                    Text(
-                                      '${product.title}',
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
+                                      Text(
+                                        '${product.author}',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Giá bán',
-                                      style: TextStyle(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
-                                    Text(
-                                      '${product.price}',
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Xuất xứ',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                buildShoppingCartIcon(),
-                              ],
+                                      Text(
+                                        '${product.coutry}',
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Trạng thái',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
+                                      ),
+                                      Text(
+                                        '${product.title}',
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Giá bán',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20),
+                                      ),
+                                      Text(
+                                        '${product.price}',
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  buildShoppingCartIcon(),
+                                ],
+                              ),
                             ),
-                          ),
+                          )
                         ],
                       )
                     ],
@@ -199,7 +210,7 @@ class ProductDetailScreen extends StatelessWidget {
               //     fontSize: 20,
               //   ),
               // ),
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               // buildShoppingCartIcon(),
               Container(
                 width: 200,
@@ -262,7 +273,7 @@ class ProductDetailScreen extends StatelessWidget {
               Row(
                 children: [
                   const Text(
-                    'Thêm vào giỏ:',
+                    'Thêm:',
                     style: TextStyle(fontSize: 18),
                   ),
                   IconButton(
