@@ -15,7 +15,6 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartManager>();
-    // final cart = CartManager();
     return Scaffold(
       appBar: AppBar(
         title: const Text('GIỎ HÀNG'),
@@ -24,8 +23,9 @@ class CartScreen extends StatelessWidget {
         children: <Widget>[
           buildCartSummary(cart, context),
           const SizedBox(height: 10),
+
           Expanded(
-            child: buildCartDetails(cart),
+            child: cart.productCount == 0 ? Center(child: Text("Giỏ hàng trống!"),): buildCartDetails(cart),
           )
         ],
       ),
@@ -71,7 +71,8 @@ class CartScreen extends StatelessWidget {
               onPressed: cart.totalAmount <= 0
                   ? null
                   : () {
-                        Navigator.of(context).pushNamed(PaymentCartScreen1.routeName);
+                      Navigator.of(context)
+                          .pushNamed(PaymentCartScreen1.routeName);
                     },
               style: TextButton.styleFrom(
                 textStyle: TextStyle(color: Theme.of(context).primaryColor),

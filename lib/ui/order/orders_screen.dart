@@ -49,7 +49,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                           ordersManager.orders[i])),
                                 );
                               },
-                              child: OrderItemCard(ordersManager.orders[i]),
+                              child:ordersManager.orderCount == 0 ? Center(child: Text("Đơn hàng trống!"),) : OrderItemCard(ordersManager.orders[i]),
                             ));
                   },
                 );

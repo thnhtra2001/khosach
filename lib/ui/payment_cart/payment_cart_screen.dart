@@ -61,6 +61,7 @@ class _PaymentCartScreen1State extends State<PaymentCartScreen1> {
                               ),
                               buildProductTotal(cart),
                               paymentNow(snapshot, cart),
+                              const SizedBox(height: 20),
                             ],
                           )),
                     );
