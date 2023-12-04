@@ -65,7 +65,7 @@ class ProductDetailScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Tên cây',
+                                        'Tên sách',
                                         style: TextStyle(
                                             color: Colors.black, fontSize: 20),
                                       ),
@@ -247,7 +247,7 @@ class ProductDetailScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      'Mô tả cây cảnh',
+                      'Mô tả sách',
                       style: TextStyle(color: Colors.grey, fontSize: 20),
                     ),
                     Text(

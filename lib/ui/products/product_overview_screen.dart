@@ -26,9 +26,6 @@ class _ProductOverviewScreenState extends State<ProductsOverviewScreen> {
   void initState() {
     super.initState();
     _fetchProducts = context.read<ProductsManager>().fetchProducts();
-    print('=========================');
-    print(_fetchProducts.toString().length);
-    print('=========================');
   }
 
   @override

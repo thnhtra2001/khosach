@@ -59,7 +59,7 @@ class CartItemCard extends StatelessWidget {
             backgroundImage: NetworkImage(cardItem.imageUrl),
           ),
           title: Text(cardItem.title),
-          subtitle: Text('Total: \$${(cardItem.price * cardItem.quantity)}'),
+          subtitle: Text('Tổng: ${(cardItem.price * cardItem.quantity)}'),
           trailing: Text('${cardItem.quantity}x'),
         ),
       ),
