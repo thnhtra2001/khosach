@@ -122,13 +122,13 @@ class ProductDetailScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Trạng thái',
+                                        'Thể loại',
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             color: Colors.black, fontSize: 20),
                                       ),
                                       Text(
-                                        '${product.title}',
+                                        '${product.category}',
                                         style: const TextStyle(
                                           color: Colors.grey,
                                           fontSize: 18,

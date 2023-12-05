@@ -41,65 +41,65 @@ class MyApp extends StatelessWidget {
           // ChangeNotifierProvider(create: (context) => OrdersManager()),
           ChangeNotifierProvider(create: (context) => AuthManager()),
         ],
-        child: Consumer<AuthManager>(builder: (context,authManager , child) {
-          return   MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            home:               authManager.isAuth
-                    ?
-                    // const ProductOverviewScreen()
-                    (context.read<AuthManager>().authToken?.role == "admin"
-                        ? const MyHomePage1(title: 'Admin Screen')
-                        : const MyHomePage(title: 'User Screen')
-                        )
-                    : FutureBuilder(
-                        future: authManager.tryAutoLogin(),
-                        builder: (context, snapshot) {
-                          return snapshot.connectionState ==
-                                  ConnectionState.waiting
-                              ? const SplashScreen()
-                              : const AuthScreen();
-                        },
-                      ),
-            routes: {
-              CartScreen.routeName: (context) => const CartScreen(),
-              OrdersScreen.routeName: (context) => const OrdersScreen(),
-              UserProductsScreen.routeName: (context) =>
-                  const UserProductsScreen(),
-              PersonalScreen.routeName:(context) => const PersonalScreen(),
-              PaymentCartScreen1.routeName:(context) => const PaymentCartScreen1(),
-            SearchScreen.routeName:(context) => const SearchScreen(),
-            ChatbotScreen1.routeName:(context) => const ChatbotScreen1(),
-            PersonalAdminScreen.routeName:(context) => const PersonalAdminScreen(),
-            SearchAdminScreen.routeName:(context) => const SearchAdminScreen(),
-            },
-            onGenerateRoute: (settings) {
-              if (settings.name == ProductDetailScreen.routeName) {
-                final productID = settings.arguments as String;
-                return MaterialPageRoute(builder: (ctx) {
-                  return ProductDetailScreen(
-                    ctx.read<ProductsManager>().findById(productID)!,
-                  );
-                });
-              }
-              if (settings.name == EditProductScreen.routeName) {
-                final productId = settings.arguments as String?;
-                return MaterialPageRoute(
-                  builder: (ctx) {
-                    return EditProductScreen(
-                      productId != null
-                          ? ctx.read<ProductsManager>().findById(productId)
-                          : null,
+        child: Consumer<AuthManager>(builder: (context, authManager, child) {
+          return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                useMaterial3: true,
+              ),
+              home: authManager.isAuth
+                  ?
+                  (context.read<AuthManager>().authToken?.role == "admin"
+                      ? const MyHomePage1(title: 'Admin Screen')
+                      : const MyHomePage(title: 'User Screen'))
+                  : FutureBuilder(
+                      future: authManager.tryAutoLogin(),
+                      builder: (context, snapshot) {
+                        return snapshot.connectionState ==
+                                ConnectionState.waiting
+                            ? const SplashScreen()
+                            : const AuthScreen();
+                      },
+                    ),
+              routes: {
+                CartScreen.routeName: (context) => const CartScreen(),
+                OrdersScreen.routeName: (context) => const OrdersScreen(),
+                UserProductsScreen.routeName: (context) =>
+                    const UserProductsScreen(),
+                PersonalScreen.routeName: (context) => const PersonalScreen(),
+                PaymentCartScreen1.routeName: (context) =>
+                    const PaymentCartScreen1(),
+                SearchScreen.routeName: (context) => const SearchScreen(),
+                ChatbotScreen1.routeName: (context) => const ChatbotScreen1(),
+                PersonalAdminScreen.routeName: (context) =>
+                    const PersonalAdminScreen(),
+                SearchAdminScreen.routeName: (context) =>
+                    const SearchAdminScreen(),
+              },
+              onGenerateRoute: (settings) {
+                if (settings.name == ProductDetailScreen.routeName) {
+                  final productID = settings.arguments as String;
+                  return MaterialPageRoute(builder: (ctx) {
+                    return ProductDetailScreen(
+                      ctx.read<ProductsManager>().findById(productID)!,
                     );
-                  },
-                );
-              }
-            });
-        })
-            );
+                  });
+                }
+                if (settings.name == EditProductScreen.routeName) {
+                  final productId = settings.arguments as String?;
+                  return MaterialPageRoute(
+                    builder: (ctx) {
+                      return EditProductScreen(
+                        productId != null
+                            ? ctx.read<ProductsManager>().findById(productId)
+                            : null,
+                      );
+                    },
+                  );
+                }
+              });
+        }));
   }
 }
 
@@ -131,8 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
               setState(() => (this.index = index)),
           destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Trang chủ"),
-            NavigationDestination(icon: Icon(Icons.shopping_cart), label: "Giỏ hàng"),
-
+            NavigationDestination(
+                icon: Icon(Icons.shopping_cart), label: "Giỏ hàng"),
             NavigationDestination(
                 icon: Icon(Icons.shopping_bag), label: "Đơn hàng"),
             NavigationDestination(
